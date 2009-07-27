@@ -10,9 +10,9 @@ libpy2ag_dbus_la_SOURCES =			\
 	Y2CCDbusAgent.cc			\
 	DbusAgent.cc DbusAgent.h
 
-libpy2ag_dbus_la_CPPFLAGS = @DBUS_CFLAGS@
+libpy2ag_dbus_la_CPPFLAGS = $(DBUS_CFLAGS) -I$(includedir)
 libpy2ag_dbus_la_LDFLAGS = -version-info 2:0
-libpy2ag_dbus_la_LIBADD = @AGENT_LIBADD@	\
-	@DBUS_LIBS@
+libpy2ag_dbus_la_LIBADD = $(AGENT_LIBADD)	\
+	$(DBUS_LIBS)
 
-INCLUDES = @AGENT_INCLUDES@
+INCLUDES = $(AGENT_INCLUDES)
