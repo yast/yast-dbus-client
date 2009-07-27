@@ -1,0 +1,52 @@
+@HEADER-COMMENT@
+
+@HEADER@
+Group:	System/YaST
+License: GPL v2 or later
+# obviously
+BuildRequires:	gcc-c++
+# needed for all yast packages
+BuildRequires:	yast2-devtools
+# testsuite
+BuildRequires:	dejagnu
+# autodocs
+BuildRequires:	doxygen
+# docbook docs
+BuildRequires:	docbook-xsl-stylesheets libxslt
+# catalog: convert URIs to local filenames
+BuildRequires:	sgml-skel
+
+# for SCR DBus service
+BuildRequires:	dbus-1-devel
+
+Summary:	YaST2 - Core Libraries
+
+%description
+This package contains the scanner, parser, and interpreter runtime
+library for the YCP scripting language used in YaST2.
+
+@PREP@
+
+@BUILD@
+
+@INSTALL@
+
+@CLEAN@
+
+%post
+/sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
+%files
+%defattr(-,root,root)
+
+%dir %{_libdir}/YaST2
+%if "%_lib" == "lib64"
+%dir /usr/lib/YaST2
+%endif
+%dir /usr/share/YaST2
+
+%{_libdir}/lib*.so.*
+@plugindir@/lib*.so.*
+@scrconfdir@/*.scr
