@@ -6,7 +6,7 @@ License: GPL v2 or later
 # obviously
 BuildRequires:	gcc-c++
 # needed for all yast packages
-BuildRequires:	yast2-devtools
+BuildRequires:	yast2-devtools yast2-core-devel
 # testsuite
 BuildRequires:	dejagnu
 # autodocs
@@ -41,12 +41,7 @@ library for the YCP scripting language used in YaST2.
 %files
 %defattr(-,root,root)
 
-%dir %{_libdir}/YaST2
-%if "%_lib" == "lib64"
-%dir /usr/lib/YaST2
-%endif
-%dir /usr/share/YaST2
-
-%{_libdir}/lib*.so.*
-@plugindir@/lib*.so.*
+@plugindir@/libpy2ag_dbus.*
 @scrconfdir@/*.scr
+%doc @docdir@
+%doc %{_datadir}/doc/yastdoc
