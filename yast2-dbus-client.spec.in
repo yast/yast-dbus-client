@@ -31,6 +31,10 @@ library for the YCP scripting language used in YaST2.
 
 @INSTALL@
 
+# remove not needed development files
+rm %{buildroot}/@plugindir@/libpy2ag_dbus.la
+rm %{buildroot}/@plugindir@/libpy2ag_dbus.so
+
 @CLEAN@
 
 %post
@@ -41,7 +45,7 @@ library for the YCP scripting language used in YaST2.
 %files
 %defattr(-,root,root)
 
-@plugindir@/libpy2ag_dbus.*
+@plugindir@/lib*.so.*
 @scrconfdir@/*.scr
 %doc @docdir@
 %doc %{_datadir}/doc/yastdoc
