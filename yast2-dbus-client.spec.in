@@ -13,6 +13,9 @@ BuildRequires:	docbook-xsl-stylesheets libxslt
 # for the DBus agent
 BuildRequires:	dbus-1-devel
 
+# this package was part of yast2-core originally
+Conflicts:      yast2-core < 2.17.31
+
 Summary:	YaST2 - DBus Client Library
 
 %description
