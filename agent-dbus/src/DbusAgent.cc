@@ -129,7 +129,7 @@ DbusAgent::Execute(const YCPPath& path, const YCPValue& value,
 	dbus_message_iter_init_append(message, &args);
 
 	YCPList tmp2 = arg->asList();
-	for (YCPList::const_iterator it = tmp2.begin(); it != tmp2.end(); ++it)
+	for (YCPListIterator it = tmp2.begin(); it != tmp2.end(); ++it)
 	{
 	    const YCPValue& tmp3 = *it;
 
