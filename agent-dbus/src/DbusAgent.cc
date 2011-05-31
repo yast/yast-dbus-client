@@ -135,7 +135,7 @@ DbusAgent::Execute(const YCPPath& path, const YCPValue& value,
 
 	    if (tmp3->isString())
 	    {
-		const char* param = tmp3->asString()->value_cstr();
+		const char* const param = tmp3->asString()->value_cstr();
 		if (!dbus_message_iter_append_basic(&args, DBUS_TYPE_STRING, &param))
 		{
 		    dbus_message_unref(message);
@@ -144,7 +144,7 @@ DbusAgent::Execute(const YCPPath& path, const YCPValue& value,
 	    }
 	    else if (tmp3->isBoolean())
 	    {
-		bool param = tmp3->asBoolean()->value();
+		dbus_bool_t param = tmp3->asBoolean()->value() ? TRUE : FALSE;
 		if (!dbus_message_iter_append_basic(&args, DBUS_TYPE_BOOLEAN, &param))
 		{
 		    dbus_message_unref(message);
