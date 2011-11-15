@@ -164,6 +164,7 @@ DbusAgent::Execute(const YCPPath& path, const YCPValue& value,
 
 	if (dbus_error_is_set(&error))
 	{
+	    y2error("dbus_connection_send_with_reply_and_block() failed (%s)", error.message);
 	    dbus_error_free(&error);
 	    return YCPError("dbus_connection_send_with_reply_and_block() failed");
 	}
@@ -173,9 +174,29 @@ DbusAgent::Execute(const YCPPath& path, const YCPValue& value,
 	    return YCPError("dbus_connection_send_with_reply_and_block() failed");
 	}
 
+	YCPList result;
+
+	DBusMessageIter reply_iter;
+	dbus_message_iter_init(reply, &reply_iter);
+	while (dbus_message_iter_get_arg_type(&reply_iter) != DBUS_TYPE_INVALID)
+	{
+	    switch (dbus_message_iter_get_arg_type(&reply_iter))
+	    {
+		case DBUS_TYPE_STRING:
+		{
+		    const char* tmp;
+		    dbus_message_iter_get_basic(&reply_iter, &tmp);
+		    result.add(YCPString(tmp));
+		    break;
+		}
+	    }
+
+	    dbus_message_iter_next(&reply_iter);
+	}
+
 	dbus_message_unref(reply);
 
-	return YCPBoolean(true);
+	return result;
     }
 
     return YCPError(string("Undefined subpath for Execute(") + path->toString() + ")");

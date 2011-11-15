@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 15 16:17:46 CET 2011 - aschnell@suse.de
+
+- return result of dbus command (needed for bnc #727538)
+- 2.22.0
+
+-------------------------------------------------------------------
 Tue May 31 16:04:48 CEST 2011 - aschnell@suse.de
 
 - fixed passing bool to dbus library
