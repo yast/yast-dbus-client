@@ -6,7 +6,7 @@ License: GPL-2.0+
 # obviously
 BuildRequires:	gcc-c++
 # needed for all yast packages
-BuildRequires:	yast2-devtools yast2-core-devel
+BuildRequires:	yast2-devtools yast2-core-devel libtool
 
 # docbook docs
 BuildRequires:	docbook-xsl-stylesheets libxslt
