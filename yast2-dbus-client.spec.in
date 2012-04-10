@@ -1,8 +1,8 @@
 @HEADER-COMMENT@
 
 @HEADER@
-Group:	System/YaST
-License: GPL-2.0+
+Group:		System/YaST
+License:	GPL-2.0
 # obviously
 BuildRequires:	gcc-c++
 # needed for all yast packages
